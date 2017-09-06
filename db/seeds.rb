@@ -1,5 +1,6 @@
 Category.destroy_all
 User.destroy_all
+Event.destroy_all
 
 ana = User.create!(email: "ana@codaisseurup.com", password: "123456")
 john = User.create!(email: "john@codaisseurup.com", password: "123456")
