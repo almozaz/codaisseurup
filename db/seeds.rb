@@ -4,6 +4,8 @@ Event.destroy_all
 
 ana = User.create!(email: "ana@codaisseurup.com", password: "123456")
 john = User.create!(email: "john@codaisseurup.com", password: "123456")
+anaprofile = Profile.create!(first_name: "ana", last_name: "Smith", bio: "Hey!!", user: ana)
+johnprofile = Profile.create!(first_name: "John", last_name: "Doe", bio: "Hello there", user: john)
 
 night = Category.create(name: "Night")
 day = Category.create(name: "Day")
