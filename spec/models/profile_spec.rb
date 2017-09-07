@@ -7,19 +7,19 @@ RSpec.describe Profile, type: :model do
   end
 
   describe "#full_name?" do
-    let!(:profile) {create :profile }
+    let(:user) { create :user }
+    let!(:profile) {create :profile, user: user }
     it "Check if returns full name in correct format" do
       expect(profile.full_name).to eq("#{profile.first_name} #{profile.last_name}")
     end
   end
 
   describe ".by_initial" do
-      subject { Profile.by_initial("S") }
-
       let(:sander) { create :profile, first_name: "Sander" }
       let(:stefan) { create :profile, first_name: "Stefan" }
       let(:wouter) { create :profile, first_name: "Wouter" }
 
+      subject { Profile.by_initial("S") }
       it "returns the profiles that match the initial" do
         expect(subject).to match_array([stefan, sander])
       end
