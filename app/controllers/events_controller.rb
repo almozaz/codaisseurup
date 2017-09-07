@@ -8,7 +8,7 @@ class EventsController < ApplicationController
 
     def show
       @categories = @event.categories
-      @photos = @room.photos
+      @photos = @event.photos
     end
 
     def new
@@ -23,7 +23,7 @@ class EventsController < ApplicationController
           @event.photos.create(image: image)
         end
 
-        redirect_to @event, notice: "Event created"
+        redirect_to edit_event_path(@event), notice: "Event created"
       else
         puts @event.errors.full_messages
         render :new
@@ -34,7 +34,7 @@ class EventsController < ApplicationController
       if current_user.id == @event.user.id
         @photos = @event.photos
       else
-        redirect_to root_path, notice "You don't have permission"
+        redirect_to root_path, notice: "You don't have permission"
       end
     end
 
@@ -44,7 +44,7 @@ class EventsController < ApplicationController
           @event.photos.create(image: image)
         end
 
-        redirect_to @event, notice: "Event updated"
+        redirect_to edit_event_path(@event), notice: "Event updated"
       else
         render :edit
       end
