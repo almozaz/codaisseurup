@@ -8,4 +8,8 @@ class Event < ApplicationRecord
   validates :ends_at, presence: true
   validates :name, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 500 }
+
+  def self.order_by_price
+    order :price
+  end
 end
