@@ -31,6 +31,18 @@
       </div>
     </div>
     <% end %>
+
+    <!-- Registration Form -->
+    <% if current_user != @event.user %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">Join this event</div>
+
+        <div class="panel-body">
+          <%= render 'registrations/form' %>
+        </div>
+      </div>
+    <% end %>
+
   </div>
 </div>
 
