@@ -2,16 +2,16 @@ class RegistrationsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-      @registration = current_user.registrations.new(registration_params.merge(event_id: params[:event_id]))
-      @registration.total_price
-      @registration.save
-      
-      redirect_to @registration.event, notice: "Thank you for joining!"
-    end
+    @registration = current_user.registrations.new(registration_params.merge(event_id: params[:event_id]))
+    @registration.total_price
+    @registration.save
 
-    private
+    redirect_to @registration.event, notice: "Thank you for joining!"
+  end
 
-    def registration_params
-      params.require(:registration).permit(:guest_count)
-    end
+  private
+
+  def registration_params
+    params.require(:registration).permit(:guest_count)
+  end
 end
