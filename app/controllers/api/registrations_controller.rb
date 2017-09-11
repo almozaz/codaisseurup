@@ -1,9 +1,8 @@
-class Api::RegistrationsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+class Api::RegistrationsController < Api::BaseController
 
   def create
     event = Event.find(params[:event_id])
-    registration = event.registration.new(registration_params)
+    registration = event.registrations.new(registration_params)
 
     if registration.save
       render status: 200, json: {
