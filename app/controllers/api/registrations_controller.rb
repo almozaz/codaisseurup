@@ -3,7 +3,7 @@ class Api::RegistrationsController < ApplicationController
 
   def create
     event = Event.find(params[:event_id])
-    registration = event.registrations.new(registration_params)
+    registration = event.registration.new(registration_params)
 
     if registration.save
       render status: 200, json: {
