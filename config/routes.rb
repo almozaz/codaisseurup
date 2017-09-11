@@ -10,4 +10,8 @@ Rails.application.routes.draw do
     resources :registrations, only: [:create]
   end
   resources :photos, only: [:destroy]
+
+  namespace :api do
+   resources :events
+  end
 end
